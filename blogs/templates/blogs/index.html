@@ -167,10 +167,10 @@
                                 {% for blog_in_home in blogs %}
                                 <div class="col-md-12 mb-4" data-aos="fade-up">
                                     <div class="d-md-flex d-block blog-entry align-items-start">
-                                        <div class="mr-0 mr-md-5 mb-3 img-wrap"><a href="single.html"><img
+                                        <div class="mr-0 mr-md-5 mb-3 img-wrap"><a href="{% url 'blog-detail' blog_in_home.id %}"><img
                                                 src="{{ blog_in_home.images.url }}" alt="Image" class="img-fluid"></a></div>
                                         <div>
-                                            <h2 class="mt-0 mb-2"><a href="single.html">{{ blog_in_home.title }}</a></h2>
+                                            <h2 class="mt-0 mb-2"><a href="{% url 'blog-detail' blog_in_home.id %}">{{ blog_in_home.title }}</a></h2>
                                             <div class="meta mb-3">Posted by Ben Jones on <a href="#">{{ blog_in_home.date_added }}</a>
                                             </div>
                                             <p>{{ blog_in_home.description|safe|slice:":200" }}</p>
