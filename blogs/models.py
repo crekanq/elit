@@ -53,3 +53,32 @@ class Blog(models.Model):
         verbose_name = 'Блог'
         verbose_name_plural = 'Блоги'
 
+
+class Comment(models.Model):
+    name = models.CharField(max_length=250, null=True)
+    email = models.EmailField(null=True)
+    text = models.TextField(null=True)
+    data_add = models.DateTimeField(auto_now_add=True)
+    post = models.ForeignKey(Blog, on_delete=models.CASCADE, related_name='comments')
+
+    def __str__(self):
+        return f'{self.name} - {self.text}'
+
+    class Meta:
+        verbose_name = 'Комментарий'
+        verbose_name_plural = 'Комментарии'
+
+
+class Contact(models.Model):
+    first_name = models.CharField(max_length=250)
+    last_name = models.CharField(max_length=250)
+    email = models.EmailField()
+    message = models.TextField()
+
+    def __str__(self):
+        return f'{self.first_name} {self.last_name}'
+
+    class Meta:
+        verbose_name = 'Контакт'
+        verbose_name_plural = 'Контакты'
+
